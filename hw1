@@ -1,0 +1,24 @@
+#!/bin/sh
+
+f1="SBP-level1.txt"
+f2="SBP-level0.txt"
+n="3"
+
+while getopts ":f:r:n:" opt; do
+	case ${opt} in
+		f )
+			f1=${OPTARG}
+			;;
+		n )
+			n=${OPTARG}
+			;;
+		r )
+			f2=${OPTARG}
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+set -e
+make -f makefile AI_hw1 F1=$f1 F2=$f2 N=$n 
+ 
